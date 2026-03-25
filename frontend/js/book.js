@@ -42,6 +42,33 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.error(e);
     }
 
+    // Fetch and display Similar Hotels
+    try {
+        const similarRes = await fetch(`/api/hotels/${hotelId}/similar`);
+        if (similarRes.ok) {
+            const similarHotels = await similarRes.json();
+            if (similarHotels.length > 0) {
+                document.getElementById('similar-hotels-container').style.display = 'block';
+                const grid = document.getElementById('similar-hotels-grid');
+                grid.innerHTML = ''; // Clear fallback
+
+                similarHotels.forEach(h => {
+                    const card = document.createElement('div');
+                    card.className = 'hotel-card';
+                    card.innerHTML = `
+                        <h3>${h.name}</h3>
+                        <p class="location">📍 ${h.location}</p>
+                        <p class="price">₹${h.price} / night</p>
+                        <button onclick="window.location.href='/book.html?id=${h._id}'" class="book-btn">View Hotel</button>
+                    `;
+                    grid.appendChild(card);
+                });
+            }
+        }
+    } catch(e) {
+        console.error("Failed to load similar hotels:", e);
+    }
+
     // Function to calculate total price dynamically
     function calculateTotal() {
         const checkIn = document.getElementById('check-in').value;
