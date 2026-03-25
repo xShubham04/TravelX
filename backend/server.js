@@ -8,6 +8,7 @@ const cors = require('cors');
 const authRoutes = require('./routes/auth');
 const hotelRoutes = require('./routes/hotel');
 const bookingRoutes = require('./routes/booking');
+const chatbotRoutes = require('./routes/chatbot');
 
 const app = express();
 
@@ -22,6 +23,7 @@ mongoose.connect(process.env.MONGO_URI || 'mongodb+srv://hamadashubham_db_user:p
 app.use('/api/auth', authRoutes);
 app.use('/api/hotels', hotelRoutes);
 app.use('/api/bookings', bookingRoutes);
+app.use('/api/chat', chatbotRoutes);
 
 // Serve frontend
 app.use(express.static(path.join(__dirname, '../frontend')));
