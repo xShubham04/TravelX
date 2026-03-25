@@ -1,0 +1,259 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body { 
+    background: #f8f9fa; 
+    color: #333; 
+    line-height: 1.6;
+}
+
+/* Navigation */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 5%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo { 
+    font-size: 1.8rem; 
+    font-weight: 800; 
+    color: #007bff; 
+    letter-spacing: -0.5px;
+}
+
+nav ul { 
+    list-style: none; 
+    display: flex; 
+    gap: 2rem; 
+    align-items: center;
+}
+
+nav a { 
+    text-decoration: none; 
+    color: #555; 
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #007bff;
+}
+
+/* Hero Section */
+header {
+    text-align: center;
+    padding: 6rem 2rem;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1455587734955-081b22074882?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+    color: white;
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.search-bar { 
+    margin-top: 1rem; 
+    display: flex; 
+    justify-content: center; 
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.5rem;
+    border-radius: 8px;
+    backdrop-filter: blur(5px);
+    width: 100%;
+    max-width: 600px;
+}
+
+.search-bar input { 
+    flex: 1;
+    padding: 1rem 1.5rem; 
+    border: none; 
+    border-radius: 6px;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.search-bar input:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0,123,255,0.3);
+}
+
+.search-bar button { 
+    padding: 1rem 2rem; 
+    border: none; 
+    background: #007bff; 
+    color: white;
+    cursor: pointer; 
+    border-radius: 6px; 
+    font-weight: bold; 
+    font-size: 1.1rem;
+    transition: background 0.3s, transform 0.2s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.search-bar button:hover {
+    background: #0056b3;
+    transform: translateY(-2px);
+}
+
+/* Main Content */
+main { 
+    padding: 4rem 5%; 
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+main h2 {
+    font-size: 2rem;
+    color: #2c3e50;
+    margin-bottom: 2rem;
+    position: relative;
+    display: inline-block;
+}
+
+main h2::after {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 3px;
+    background: #007bff;
+    bottom: -10px;
+    left: 0;
+    border-radius: 2px;
+}
+
+.hotel-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
+    gap: 2rem; 
+}
+
+/* Hotel Cards */
+.hotel-card { 
+    background: #fff; 
+    border-radius: 12px; 
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.hotel-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.hotel-img {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+    background: #ddd;
+}
+
+.hotel-content {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.hotel-content h3 { 
+    color: #2c3e50; 
+    margin-bottom: 0.5rem;
+    font-size: 1.4rem;
+}
+
+.hotel-location {
+    color: #007bff;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.hotel-content p { 
+    margin-top: 0.5rem; 
+    color: #666; 
+    font-size: 0.95rem;
+}
+
+.price-tag {
+    font-size: 1.25rem !important;
+    font-weight: 700;
+    color: #28a745 !important;
+    margin: 1rem 0;
+}
+
+.btn-book { 
+    margin-top: auto; 
+    width: 100%;
+    padding: 0.8rem 1rem; 
+    border: none; 
+    background: #007bff; 
+    color: white; 
+    border-radius: 6px; 
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: background 0.3s;
+}
+
+.btn-book:hover:not(:disabled) {
+    background: #0056b3;
+}
+
+.btn-book:disabled { 
+    background: #6c757d; 
+    cursor: not-allowed; 
+    opacity: 0.8;
+}
+
+/* Auth Pages Fallback */
+.auth-container { 
+    max-width: 400px; 
+    margin: 5rem auto; 
+    background: white; 
+    padding: 2.5rem; 
+    border-radius: 12px; 
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
+    text-align: center; 
+}
+.auth-container input { 
+    width: 100%; 
+    padding: 1rem; 
+    margin: 0.8rem 0; 
+    border: 1px solid #ddd; 
+    border-radius: 6px; 
+}
+.auth-container button { 
+    width: 100%; 
+    padding: 1rem; 
+    background: #007bff; 
+    color: white; 
+    border: none; 
+    border-radius: 6px; 
+    font-weight: 600;
+    cursor: pointer; 
+    margin-top: 1rem; 
+}
+.error { color: #dc3545; margin-top: 1rem; }

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelX - Complete Booking</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .booking-main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+            padding: 2rem;
+            background: linear-gradient(rgba(0,0,0,0.02), rgba(0,0,0,0.05));
+        }
+
+        .booking-container {
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .booking-container h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+        }
+
+        .booking-container h2::after { 
+            display: none; 
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .input-group label {
+            font-size: 0.95rem;
+            color: #555;
+            font-weight: 600;
+        }
+
+        .input-group input {
+            padding: 0.9rem 1rem;
+            border: 2px solid #eee;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 0 4px rgba(0,123,255,0.1);
+        }
+
+        .auth-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 1.1rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 1.5rem;
+            width: 100%;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .auth-btn:hover {
+            background: #218838;
+            transform: translateY(-2px);
+        }
+
+        .status-msg {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-weight: 600;
+            min-height: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">TravelX</div>
+        <ul id="nav-links">
+            <li><a href="/home.html">Home</a></li>
+            <li><a href="/my-bookings.html">My Bookings</a></li>
+            <li id="auth-link"><a href="#" onclick="logout()">Logout</a></li>
+        </ul>
+    </nav>
+
+    <main class="booking-main">
+        <div class="booking-container">
+            <h2 id="hotel-name-display" style="margin-bottom: 0.5rem;">Loading Hotel Details...</h2>
+            <h4 id="hotel-price-display" style="color: #666; margin-top: 0; margin-bottom: 2rem;"></h4>
+            
+            <form id="booking-form">
+                <div class="input-group">
+                    <label>Guest Full Name</label>
+                    <input type="text" id="guest-name" placeholder="John Doe" required>
+                </div>
+                
+                <div class="input-group">
+                    <label>Check-in Date</label>
+                    <input type="date" id="check-in" required>
+                </div>
+                
+                <div class="input-group">
+                    <label>Check-out Date</label>
+                    <input type="date" id="check-out" required>
+                </div>
+                
+                <div id="total-price-display" style="font-size: 1.2rem; font-weight: bold; color: #333; margin-top: 1rem; text-align: right;">Total: ₹0</div>
+
+                <button type="submit" class="auth-btn">Confirm Booking</button>
+                <div id="booking-msg" class="status-msg"></div>
+            </form>
+        </div>
+    </main>
+
+    <script src="/js/book.js"></script>
+    <script>
+        async function logout() {
+            await fetch('/api/auth/logout', { method: 'POST' });
+            window.location.href = '/';
+        }
+    </script>
+</body>
+</html>
